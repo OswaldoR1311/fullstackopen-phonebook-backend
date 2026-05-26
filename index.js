@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const cors = require('cors')
 
 const requestLogger = (request, response, next) => {
   console.log('Method ', request.method)
@@ -39,7 +38,7 @@ const generateID = () => {
 
 app.use(express.json())
 app.use(requestLogger)
-app.use(cors())
+app.use(express.static('dist'))
 
 app.get('/api/persons', (req, res) => {
   res.status(200).json(persons)
